@@ -9,6 +9,10 @@ class UserController extends Controller
 {
     protected $oUserService;
 
+    /**
+     * UserController constructor.
+     * @param UserService $oUserService
+     */
     public function __construct(UserService $oUserService)
     {
         $this->oUserService = $oUserService;
@@ -31,42 +35,81 @@ class UserController extends Controller
     public function show()
     {
         $data = $this->oUserService->getList();
-
         return \View::make('home')->with('data', $data);
-
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param $iUserId
+     * @param $iTodoId
+     * @param $sTodoList
+     * @return mixed
      */
-    public function edit($id)
+    public function todoList($iUserId, $iTodoId, $sTodoList)
     {
-        //
+        $aDataList = $this->oUserService->getMyListP($iTodoId);
+        return \View::make('list')
+            ->with('aDataList', $aDataList)
+            ->with('iTodoId', $iTodoId)
+            ->with('sTodoList', $sTodoList);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param $iUserId
+     * @param $iTodoId
      */
-    public function update(Request $request, $id)
+    public function deleteTodo($iUserId, $iTodoId)
     {
-        //
+        if ($this->oUserService->deleteTodoList($iUserId, $iTodoId) == true) {
+            return redirect('home');
+        }
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param Request $oRequest
      */
-    public function destroy($id)
+    public function addToList(Request $oRequest)
     {
-        //
+        return $this->oUserService->createList($oRequest);
     }
+
+    /**
+     * @param $iTodoId
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function deleteList($iTodoId, $iId)
+    {
+        if ($this->oUserService->deleteMyList($iTodoId, $iId) == true) {
+            return redirect('home');
+        }
+    }
+
+    /**
+     * @param Request $oRequest
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update(Request $oRequest)
+    {
+        return $this->oUserService->updateList($oRequest);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function myList()
+    {
+//        $data = $this->oUserService->getList();
+        return \View::make('MyList'); //->with('data', $data);
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logout()
+    {
+        \Auth::logout();
+        return redirect('home');
+    }
+
+
 }

@@ -18,10 +18,4 @@
 
     @include('ListContainer')
 
-
-    <!-- Update Modal -->
-    @include('UpdateContainer')
-
-
-
 @endsection

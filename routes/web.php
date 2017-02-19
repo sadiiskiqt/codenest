@@ -16,6 +16,13 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index');
 Route::post('/mypost', 'UserController@create');
+Route::get('/del/{iUserId}/{iTodoId}', 'UserController@deleteTodo');
+Route::get('/list/{iUserId}/{iTodoId}/{sTodoList}/', 'UserController@todoList');
+Route::post('/add', 'UserController@addToList');
+Route::get('/deleteList/{iTodoId}/{iId}', 'UserController@deleteList');
+Route::post('/update', 'UserController@update');
+Route::get('/logout', 'UserController@logout');
+Route::get('/mylist', 'UserController@myList');
+

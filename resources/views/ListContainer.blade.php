@@ -5,15 +5,15 @@
 
     @foreach($aDataResults as $aDataResult)
         <div class="w3-container">
-            <a href="">
+            <a href="{{ url('list/'.$aDataResult->iUserId.'/'.$aDataResult->id.'/'.$aDataResult->sTodoList.'/') }}">
                 <h4>
                     <strong>{{$aDataResult->sTodoList}}</strong>
                 </h4>
             </a>
             <p>{{$aDataResult->created_at}}</p>
             <p>
-                <a class="w3-btn w3-ripple w3-red" href="">Delete </a>
-                <a class="w3-btn w3-ripple w3-blue" href="">Arhiv</a>
+                <a class="w3-btn w3-ripple w3-red" href="{{ url('del/'.$aDataResult->iUserId.'/'.$aDataResult->id.'/') }}">Delete </a>
+                <a class="w3-btn w3-ripple w3-blue" href="{{ url('del/'.$aDataResult->iUserId.'/'.$aDataResult->id.'/') }}">Arhiv</a>
             </p>
         </div>
         <hr>

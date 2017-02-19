@@ -108,4 +108,17 @@ class UserRepository
             ->update(['sList' => $sUpdateList, 'updated_at' => date("Y-m-d H:i:s")]);
         return true;
     }
+
+    protected function getMyTodoList($iUserId)
+    {
+
+        $oResult = \DB::table($this->sTodoListTable)
+            ->orderBy('id', 'desc')
+            ->where('delete', '==', 0)
+            ->where('iUserId', '=', $iUserId)
+            ->get();
+
+        return $oResult->toArray();
+    }
+
 }

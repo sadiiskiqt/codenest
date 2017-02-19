@@ -98,8 +98,8 @@ class UserController extends Controller
      */
     public function myList()
     {
-//        $data = $this->oUserService->getList();
-        return \View::make('MyList'); //->with('data', $data);
+        $aDataList = $this->oUserService->getMyTodo();
+        return \View::make('MyList')->with('aDataList', $aDataList);
     }
 
     /**

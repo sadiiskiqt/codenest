@@ -8,10 +8,10 @@
             <a href="{{ url('/home') }}">Home</a>
         </h6>
         <h6>
-            <a href="mylist">My Todo List</a>
+            <a href="{{ url('/mylist') }}">My Todo List</a>
         </h6>
         <h6>
-            <a href="logout">Logout</a>
+            <a href="{{ url('/logout') }}">Logout</a>
         </h6>
         <hr>
     </div>

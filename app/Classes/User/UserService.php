@@ -64,17 +64,14 @@ class UserService extends UserRepository
             'todo' => 'required'
         );
 
-//        dd($oRequest->all());
-
         $oValidate = \Validator::make($oRequest->all(), $aRules);
         if (!$oValidate->passes()) {
             \Session::flash('todo_errors', 'Error List');
-            exit('error');
-            return redirect('home');
+            return redirect('mylist');
         } else {
             //Save
             $this->saveList($oRequest->input('todo'), $oRequest->input('sList'));
-            return redirect('home');
+            return redirect('mylist');
         }
     }
 
@@ -97,12 +94,12 @@ class UserService extends UserRepository
         return $this->setToDeleteList($iTodoId, $id);
     }
 
-
+    /**
+     * @param Request $oRequest
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function updateList(Request $oRequest)
     {
-
-       // dd($oRequest->all());
-
         $aRules = array(
             'sUpdateList' => 'required|min:2|max:255',
             'iTodoId' => 'required',
@@ -112,7 +109,7 @@ class UserService extends UserRepository
         $oValidate = \Validator::make($oRequest->all(), $aRules);
         if (!$oValidate->passes()) {
             \Session::flash('todo_errors', 'Error List Update');
-            return redirect('home');
+            return redirect('mylist');
         } else {
             //Save
             $this->updateMyList(
@@ -120,8 +117,16 @@ class UserService extends UserRepository
                 $oRequest->input('iListId'),
                 $oRequest->input('sUpdateList')
             );
-            return redirect('home');
+            return redirect('mylist');
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMyTodo()
+    {
+        return $this->getMyTodoList(\Auth::user()->id);
     }
 
 }

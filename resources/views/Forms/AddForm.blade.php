@@ -1,5 +1,5 @@
 <div class="w3-container" id="contact">
-    <h2>New TODO List</h2>
+    <h2>All TODO Lists</h2>
     <form action="{{ action('UserController@create')}}" method="post">
         {{ csrf_field() }}
         <p>

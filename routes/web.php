@@ -26,3 +26,4 @@ Route::post('/update', 'UserController@update');
 Route::get('/logout', 'UserController@logout');
 Route::get('/mylist', 'UserController@myList');
 
+Route::get('/excel', 'UserController@excel');

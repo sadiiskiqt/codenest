@@ -102,6 +102,21 @@ class UserController extends Controller
         return \View::make('MyList')->with('aDataList', $aDataList);
     }
 
+    public function excel()
+    {
+        $user = new \App\User;
+
+        $users = $user::select('id', 'name', 'email', 'created_at')->get();
+        \Excel::create('users', function($excel) use($users) {
+            $excel->sheet('Sheet 1', function($sheet) use($users) {
+                $sheet->fromArray($users);
+            });
+        })->export('xls');
+
+        return \View::make('excel');
+    }
+
+
     /**
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */

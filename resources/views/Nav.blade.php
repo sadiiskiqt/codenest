@@ -13,9 +13,6 @@
         <h6>
             <a href="{{ url('/logout') }}">Logout</a>
         </h6>
-        <h6>
-            <a href="{{ url('/excel') }}">Excel</a>
-        </h6>
         <hr>
     </div>
 </nav>

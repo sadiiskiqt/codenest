@@ -25,5 +25,4 @@ Route::get('/deleteList/{iTodoId}/{iId}', 'UserController@deleteList');
 Route::post('/update', 'UserController@update');
 Route::get('/logout', 'UserController@logout');
 Route::get('/mylist', 'UserController@myList');
-
-Route::get('/excel', 'UserController@excel');
+Route::get('/excel/{iTodoId}', 'FileController@excel');

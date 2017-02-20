@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 class UserService extends UserRepository
 {
 
+    public $getList;
+
+
     /**
      * @param Request $oRequest
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -81,7 +84,15 @@ class UserService extends UserRepository
      */
     public function getMyListP($iTodoId)
     {
-        return $this->getMyList($iTodoId);
+        return $this->etList = $this->getMyList($iTodoId);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getListP()
+    {
+        return $this->etList;
     }
 
     /**

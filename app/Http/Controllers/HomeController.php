@@ -9,7 +9,6 @@ use App\Classes\User\UserService as UserService;
 class HomeController extends Controller
 {
     protected $oUserService;
-
     /**
      * Create a new controller instance.
      * @return void

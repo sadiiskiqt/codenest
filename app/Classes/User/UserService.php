@@ -18,17 +18,18 @@ class UserService extends UserRepository
     public function createTodoList(Request $oRequest)
     {
         $aRules = array(
-            'sTodoList' => 'required|min:2|max:255'
+            'sTodoList' => 'required|min:5|max:255'
         );
 
         $oValidate = \Validator::make($oRequest->all(), $aRules);
         if (!$oValidate->passes()) {
-            \Session::flash('todo_errors', 'Error');
+            \Session::flash('todo_errors', 'Error: Min:5 | Max:255 characters');
             return redirect('mylist');
         } else {
             //Save
             $iUserId = \Auth::user()->id;
             $this->saveTodoList($iUserId, $oRequest->input('sTodoList'));
+            \Session::flash('success_todo', 'You successfully Create ToDo List');
             return redirect('mylist');
         }
     }

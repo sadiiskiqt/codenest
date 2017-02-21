@@ -3,7 +3,6 @@
         <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-closebtn w3-hover-text-red"></i>
         <h3>Hi: {{\Auth::user()->name}}</h3>
         <h3>Create Your ToDo</h3>
-
         <h6>
             <a href="{{ url('/home') }}">Home</a>
         </h6>

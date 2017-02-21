@@ -7,13 +7,10 @@
     <div class="w3-main w3-white" style="margin-left:260px">
         <!-- Contact -->
         @include('Forms.AddToTodoList')
-
-
         <hr>
         @if(!empty($aDataList))
         </br>
         <a class="w3-btn w3-ripple w3-blue" href="{{ url('excel/'.$iTodoId.'/') }}">Download List to Excel</a>
-
         <hr>
             @foreach($aDataList as $aDataResult)
                 <div class="w3-container">

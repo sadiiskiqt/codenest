@@ -12,8 +12,7 @@
             <p>{{$aDataResult->updated_at}}</p>
             <p>
                 <a class="w3-btn w3-ripple w3-red" href="{{ url('del/'.$aDataResult->iUserId.'/'.$aDataResult->id.'/') }}">Delete </a>
-                <a class="w3-btn w3-ripple w3-blue" href="{{ url('del/'.$aDataResult->iUserId.'/'.$aDataResult->id.'/') }}">Arhiv</a>
-                <a class="w3-btn w3-ripple w3-green" href="{{ url('excel/'.$aDataResult->iUserId.'/'.$aDataResult->id.'/'.$aDataResult->sTodoList.'/') }}">Download Excel</a>
+                <a class="w3-btn w3-ripple w3-blue" href="{{ url('list/'.$aDataResult->iUserId.'/'.$aDataResult->id.'/'.$aDataResult->sTodoList.'/') }}">View</a>
             </p>
         </div>
         <hr>

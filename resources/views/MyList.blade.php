@@ -19,7 +19,9 @@
                     <p>{{$aData->updated_at}}</p>
                     <p>
                         <a class="w3-btn w3-ripple w3-red" href="{{ url('del/'.$aData->iUserId.'/'.$aData->id.'/') }}">Delete </a>
-                        <a class="w3-btn w3-ripple w3-blue" href="{{ url('del/'.$aData->iUserId.'/'.$aData->id.'/') }}">Arhiv</a>
+                        {{--<a class="w3-btn w3-ripple w3-blue" href="{{ url('del/'.$aData->iUserId.'/'.$aData->id.'/') }}">Arhiv</a>--}}
+                        <a class="w3-btn w3-ripple w3-blue" href="{{ url('list/'.$aData->iUserId.'/'.$aData->id.'/'.$aData->sTodoList.'/') }}">Add points</a>
+
                     </p>
                 </div>
                 <hr>

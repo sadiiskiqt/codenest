@@ -24,12 +24,12 @@ class UserService extends UserRepository
         $oValidate = \Validator::make($oRequest->all(), $aRules);
         if (!$oValidate->passes()) {
             \Session::flash('todo_errors', 'Error');
-            return redirect('home');
+            return redirect('mylist');
         } else {
             //Save
             $iUserId = \Auth::user()->id;
             $this->saveTodoList($iUserId, $oRequest->input('sTodoList'));
-            return redirect('home');
+            return redirect('mylist');
         }
     }
 

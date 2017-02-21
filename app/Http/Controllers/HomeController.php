@@ -27,7 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $aDataResults = $this->oUserService->getList();
-        return \View::make('home')->with('aDataResults', $aDataResults);
+        if (\Auth::user()->id == 1) {
+            $aDataResults = $this->oUserService->getList();
+            return \View::make('home')->with('aDataResults', $aDataResults);
+        } else {
+            return redirect('mylist');
+        }
     }
 }

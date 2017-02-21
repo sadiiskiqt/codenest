@@ -12,7 +12,9 @@
             <p>{{$aDataResult->updated_at}}</p>
             <p>
                 <a class="w3-btn w3-ripple w3-red" href="{{ url('del/'.$aDataResult->iUserId.'/'.$aDataResult->id.'/') }}">Delete </a>
-                <a class="w3-btn w3-ripple w3-blue" href="{{ url('list/'.$aDataResult->iUserId.'/'.$aDataResult->id.'/'.$aDataResult->sTodoList.'/') }}">View</a>
+                {{--<a class="w3-btn w3-ripple w3-blue" href="{{ url('list/'.$aDataResult->iUserId.'/'.$aDataResult->id.'/'.$aDataResult->sTodoList.'/') }}">View</a>--}}
+                <a class="w3-btn w3-ripple w3-blue" href="{{ url('list/'.$aDataResult->iUserId.'/'.$aDataResult->id.'/'.$aDataResult->sTodoList.'/') }}">Add points</a>
+
             </p>
         </div>
         <hr>
